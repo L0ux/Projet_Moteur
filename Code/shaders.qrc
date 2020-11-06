@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>vshader.glsl</file>
+        <file>fshader.glsl</file>
+        <file>Ressources/cube.png</file>
+        <file>Ressources/sphere.off</file>
+        <file>Ressources/textures.qrc</file>
+    </qresource>
+</RCC>
