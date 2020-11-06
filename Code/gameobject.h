@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "Transform.h"
+#include "transform.h"
 #include <QtDebug>
 
 class GameObject
@@ -11,14 +11,15 @@ public:
 
     //Attribut
     Transform transform;
-    std::vector<GameObject> fils;
+    std::vector<GameObject*> fils;
     QString nom;
 
 
     //Methode
-    void addFils(GameObject f);
+    void addFils(GameObject* f);
     void printFils();
     void setTransform(Transform t);
+    GameObject* getObject(QString n);
 };
 
 #endif // GAMEOBJECT_H

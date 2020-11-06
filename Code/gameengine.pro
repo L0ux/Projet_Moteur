@@ -4,17 +4,18 @@ TARGET = gameengine
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    gameobject.cpp
+    gameobject.cpp \
+    transform.cpp
 
 SOURCES += \
     mainwidget.cpp \
     geometryengine.cpp
 
 HEADERS += \
-    Transform.h \
     gameobject.h \
     mainwidget.h \
-    geometryengine.h
+    geometryengine.h \
+    transform.h
 
 RESOURCES += \
     shaders.qrc \

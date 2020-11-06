@@ -7,7 +7,42 @@
 #include <math.h>
 #include <QDebug>
 
- // -- V1
+// --V2
+class Transform{
+
+private:
+    QMatrix4x4 model;
+    float localScale;
+    QVector3D localRotation;
+    QVector3D localTranslation;
+    QMatrix4x4 applyTranslation();
+    QMatrix4x4 applyScale();
+    QMatrix4x4 applyRotation();
+
+public:
+    Transform();
+    float getScale();
+    Transform scale(float s);
+    QVector3D getRotation();
+    Transform rotate(QVector3D r);
+    QVector3D getTranslation();
+    Transform translate(QVector3D v);
+    QMatrix4x4 getModel();
+    void setModel(QMatrix4x4 m);
+    QMatrix4x4 computeModel();
+    Transform combine_with(Transform & t);
+    void printTransform();
+
+    //Version LOUX
+    QMatrix4x4 lModel;
+    void lRotate(QVector3D r);
+    void lTranslate(QVector3D t);
+    void lScale(float s);
+    void lPrintModel();
+
+};
+
+/* // -- V1
 class Transform{
     QMatrix4x4 model;
     float localScale;
@@ -126,7 +161,7 @@ public:
 
     // methods which i have no idea
     // what to do with but they were in the class course
- /*   Transform inverse();
+    Transform inverse();
 
     QVector4D apply(QVector4D p);
 
@@ -135,4 +170,4 @@ public:
     QVector3D applyToVersor(QVector3D v);
     Transform interpolate_with(Transform& t, float k);*/
 
-};
+//};*/

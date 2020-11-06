@@ -68,31 +68,23 @@ MainWidget::MainWidget(QWidget *parent) :
     angularSpeed(0),
     world("World")
 {
+    GameObject* lune = new GameObject("Lune");
+    lune->transform.scale(0.3);
+    lune->transform.translate({0,2,2});
+    lune->transform.rotate({6.68,3.f,0});
 
-    Transform t_lune;
-    t_lune.scale(0.3);
-    t_lune.translate({0,2,2});
-    t_lune.rotate({6.68,3.f,0});
-    GameObject lune("Lune");
-    lune.setTransform(t_lune);
+    GameObject* terre = new GameObject("Terre");
+    terre->transform.scale(0.3);
+    terre->transform.translate({10,0,0});
+    terre->transform.rotate({23.44,-2.f,0});
+    terre->addFils(lune);
 
-    Transform t_terre;
-    t_terre.scale(0.3);
-    t_terre.translate({10,0,0});
-    t_terre.rotate({23.44,-2.f,0});
-    GameObject terre("Terre");
-    terre.setTransform(t_terre);
-    terre.addFils(lune);
-
-    Transform t_soleil;
-    t_soleil.scale(5);
-    t_soleil.rotate({0,0,0});
-    GameObject soleil("Soleil");
-    soleil.setTransform(t_soleil);
-    soleil.addFils(terre);
+    GameObject* soleil = new GameObject("Soleil");
+    soleil->transform.scale(7);
+    soleil->addFils(terre);
 
     world.addFils(soleil);
-    world.printFils();
+    //world.printFils();
 }
 
 MainWidget::~MainWidget()
@@ -233,9 +225,13 @@ void MainWidget::resizeGL(int w, int h)
 }
 //! [5]
 
-void MainWidget::draw(QMatrix4x4 mvp){
-    program.setUniformValue("mvp_matrix", mvp);
+void MainWidget::draw(QMatrix4x4 mvp,GameObject* object){
+    QMatrix4x4 matrice = mvp * object->transform.computeModel();
+    program.setUniformValue("mvp_matrix", matrice);
     geometries->drawCubeGeometry(&program);
+    for( unsigned int i = 0; i < object->fils.size(); i++){
+        draw(matrice,object->fils[i]);
+    }
 }
 
 void MainWidget::paintGL()
@@ -252,66 +248,21 @@ void MainWidget::paintGL()
     view.translate(0.0, 0.0, -70.0);
     //view.rotate(QQuaternion::fromAxisAndAngle({0,1,0}, -45.f)); // camera axis & camera angle
 
-//! [6]
-    /*std::stack<Transform> hierarchie;
+    GameObject* soleil = world.getObject("Soleil");
+    GameObject* terre = soleil->getObject("Terre");
+    GameObject* lune =  terre->getObject("Lune");
 
-    Transform soleil;
-    Transform terre;
-    Transform lune;
+    lune->transform.rotate({6.68,3.f * angle_rotation,0});
+    terre->transform.rotate({23.44,-2.f * angle_rotation,0});
+    soleil->transform.rotate({0,angle_rotation,0});
 
-    soleil.scale(5);
-    r_soleil = {0,angle_rotation,0};
-    soleil.rotate(r_soleil);
-
-    draw(projection * view * soleil.computeModel());
-    hierarchie.push(soleil);
-
-    terre.scale(0.3);
-    terre.translate({10,0,0});
-
-    r_terre = {23.44,-2.f * angle_rotation,0};
-    terre.rotate(r_terre);
-
-
-
-    hierarchie.push(terre);
-    draw(projection * view * soleil.getModel() * terre.computeModel());
-
-
-    lune.scale(0.3);
-    lune.translate({0,2,2});
-
-
-    r_lune = {6.68,3.f * angle_rotation,0};
-    lune.rotate(r_lune);
-
-
-    draw(projection * view * soleil.getModel() * terre.getModel() * lune.computeModel());*/
 
     for( unsigned long i = 0; i < world.fils.size(); i++){
-        world.fils[i].transform.rotate({0,angle_rotation,0});
-        draw(projection * view * world.fils[i].transform.computeModel());
-        world.fils[i].fils[i].transform.rotate({23.44,-2.f * angle_rotation,0});
-        draw(projection * view * world.fils[i].transform.computeModel() * world.fils[i].fils[i].transform.computeModel());
-        world.fils[i].fils[i].fils[i].transform.rotate({6.68,3.f * angle_rotation,0});
-        draw(projection * view * world.fils[i].transform.computeModel() * world.fils[i].fils[i].transform.computeModel()  * world.fils[i].fils[i].fils[i].transform.computeModel());
+        draw(projection * view,world.fils[i]);
     }
 
     timerEvent(new QTimerEvent(0));
 
-    //hierarchie.pop();
-    //hierarchie.pop();
 
-
-    /* **** How to
-    // Set modelview-projection matrix
-    program.setUniformValue("mvp_matrix", projection * view * model);
-
-    // Use texture unit 0 which contains cube.png
-    program.setUniformValue("texture", 0);
-
-    // Draw cube geometry
-    geometries->drawCubeGeometry(&program);
-    */
 
 }

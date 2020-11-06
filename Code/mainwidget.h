@@ -83,7 +83,7 @@ protected:
     void resizeGL(int w, int h) override;
     void paintGL() override;
 
-    void draw(QMatrix4x4 mvp);
+    void draw(QMatrix4x4 mvp,GameObject* object);
 
     void initShaders();
     void initTextures();

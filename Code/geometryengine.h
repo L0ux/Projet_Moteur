@@ -54,7 +54,7 @@
 #include <QOpenGLFunctions_3_1>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLBuffer>
-#include "Transform.h"
+#include "transform.h"
 
 struct VertexData
 {
