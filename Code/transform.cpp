@@ -68,9 +68,7 @@ QVector3D Transform::getRotation(){
 };
 
 Transform Transform::rotate(QVector3D r){
-    qDebug() << "rotation" << r;
     localRotation = r;
-    qDebug() << "local" << localRotation;
     return *this;
 }
 

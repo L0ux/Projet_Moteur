@@ -12,14 +12,15 @@ public:
     //Attribut
     Transform transform;
     std::vector<GameObject*> fils;
+    GameObject* pere;
     QString nom;
 
 
     //Methode
     void addFils(GameObject* f);
     void printFils();
-    void setTransform(Transform t);
     GameObject* getObject(QString n);
+    void addPere(GameObject* p);
 };
 
 #endif // GAMEOBJECT_H

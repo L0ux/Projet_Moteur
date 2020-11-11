@@ -56,11 +56,6 @@
 
 float angle_rotation = 0.f;
 
-QVector3D r_soleil{0,0,0};
-QVector3D r_terre{0,0,0};
-QVector3D r_lune{0,0,0};
-
-
 MainWidget::MainWidget(QWidget *parent) :
     QOpenGLWidget(parent),
     geometries(0),
@@ -83,6 +78,12 @@ MainWidget::MainWidget(QWidget *parent) :
     soleil->transform.scale(7);
     soleil->addFils(terre);
 
+    camera = new Camera("Camera");
+    camera->transform.translate({0.0, 0.0, -70.0});
+
+
+    //terre->addFils(camera);
+    world.addFils(camera);
     world.addFils(soleil);
     //world.printFils();
 }
@@ -215,15 +216,16 @@ void MainWidget::resizeGL(int w, int h)
     qreal aspect = qreal(w) / qreal(h ? h : 1);
 
     // Set near plane to 3.0, far plane to 7.0, field of view 45 degrees
-    const qreal zNear = 1.0, zFar = 500.0, fov = 70.0;
+    const qreal zNear = 1.0, zFar = 500.0, fov = 45.0;
 
     // Reset projection
-    projection.setToIdentity();
+    //projection.setToIdentity();
+    camera->projection.setToIdentity();
 
     // Set perspective projection
-    projection.perspective(fov, aspect, zNear, zFar);
+    //projection.perspective(fov, aspect, zNear, zFar);
+    camera->projection.perspective(fov, aspect, zNear, zFar);
 }
-//! [5]
 
 void MainWidget::draw(QMatrix4x4 mvp,GameObject* object){
     QMatrix4x4 matrice = mvp * object->transform.computeModel();
@@ -237,16 +239,11 @@ void MainWidget::draw(QMatrix4x4 mvp,GameObject* object){
 void MainWidget::paintGL()
 {
 
-
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
     texture->bind();
-
-    QMatrix4x4 view;
-    view.translate(0.0, 0.0, -70.0);
-    //view.rotate(QQuaternion::fromAxisAndAngle({0,1,0}, -45.f)); // camera axis & camera angle
 
     GameObject* soleil = world.getObject("Soleil");
     GameObject* terre = soleil->getObject("Terre");
@@ -255,14 +252,25 @@ void MainWidget::paintGL()
     lune->transform.rotate({6.68,3.f * angle_rotation,0});
     terre->transform.rotate({23.44,-2.f * angle_rotation,0});
     soleil->transform.rotate({0,angle_rotation,0});
-
+    qDebug() << "world" << world.transform.computeModel();
+    qDebug() << "camera" << camera->model();
 
     for( unsigned long i = 0; i < world.fils.size(); i++){
-        draw(projection * view,world.fils[i]);
+        draw(camera->projection*camera->vue()*camera->model(),world.fils[i]);
     }
 
     timerEvent(new QTimerEvent(0));
 
-
-
 }
+
+void MainWidget::keyPressEvent(QKeyEvent *event)
+{
+
+
+    if(event->text() == QString::fromStdString("r")){
+         qDebug("Appuie sur R");
+    }
+
+    update();
+    event->accept();
+};

@@ -4,10 +4,13 @@ GameObject::GameObject(QString n)
 {
     nom = n;
     transform = Transform();
+    pere = nullptr;
 }
 
 void GameObject::addFils(GameObject* f){
     fils.push_back(f);
+    //qDebug() << "Je suis" << this->nom << "et j'ajoute" << f->nom << "en fils";
+    f->addPere(this);
 }
 
 void GameObject::printFils(){
@@ -22,10 +25,6 @@ void GameObject::printFils(){
     }
 }
 
-void GameObject::setTransform(Transform t){
-    transform = t;
-}
-
 GameObject* GameObject::getObject(QString n){
     for( unsigned int i = 0; i < fils.size(); i++ ){
         if(fils[i]->nom == n){
@@ -33,4 +32,9 @@ GameObject* GameObject::getObject(QString n){
         }
     }
     return nullptr;
+}
+
+void GameObject::addPere(GameObject* p){
+    pere = p;
+    //qDebug() << "Je suis" << this->nom << "et j'ajoute" << p->nom << "comme père";;
 }

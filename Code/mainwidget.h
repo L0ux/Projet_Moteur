@@ -63,6 +63,7 @@
 #include <QOpenGLTexture>
 #include <stack>
 #include "gameobject.h"
+#include "camera.h"
 
 class GeometryEngine;
 
@@ -96,12 +97,14 @@ private:
     QOpenGLTexture *texture;
 
     QMatrix4x4 projection;
+    Camera *camera;
 
     QVector2D mousePressPosition;
     QVector3D rotationAxis;
     qreal angularSpeed;
     QQuaternion rotation;
     GameObject world;
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
 #endif // MAINWIDGET_H
