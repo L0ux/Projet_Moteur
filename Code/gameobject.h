@@ -21,6 +21,7 @@ public:
     void printFils();
     GameObject* getObject(QString n);
     void addPere(GameObject* p);
+    QVector3D getWorldPosition();
 };
 
 #endif // GAMEOBJECT_H

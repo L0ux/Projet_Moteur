@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<root ptr="0x5566a4a6b240" id="365" symbol="11SwRootFrame" lower="366">
+ <sfxViewShells>
+  <SwView>
+   <SfxViewShell ptr="0x5566a4b3e400" id="1"/>
+   <SwCursorShell>
+    <SwViewShell/>
+    <m_pCurrentCursor>
+     <SwPaM>
+      <point>
+       <SwPosition nNode="12" nContent="57"/>
+      </point>
+     </SwPaM>
+    </m_pCurrentCursor>
+   </SwCursorShell>
+  </SwView>
+ </sfxViewShells>
+ <infos>
+  <bounds left="284" top="284" width="14969" height="16838" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+  <prtBounds left="0" top="0" width="14969" height="16838"/>
+ </infos>
+ <page ptr="0x7f841c01c2e8" id="366" symbol="11SwPageFrame" upper="365" lower="367">
+  <infos>
+   <bounds left="3347" top="284" width="11906" height="16838" mbFixSize="true" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+   <prtBounds left="1134" top="1134" width="9638" height="14570"/>
+  </infos>
+  <body ptr="0x7f841c01e288" id="367" symbol="11SwBodyFrame" upper="366" lower="368">
+   <infos>
+    <bounds left="4481" top="1418" width="9638" height="14570" mbFixSize="true" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+    <prtBounds left="0" top="0" width="9638" height="14570"/>
+   </infos>
+   <txt ptr="0x7f841c017c60" id="368" symbol="11SwTextFrame" next="369" upper="367" txtNodeIndex="9">
+    <infos>
+     <bounds left="4481" top="1418" width="9638" height="884" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="240" width="9638" height="644"/>
+    </infos>
+TP Moteur de Jeux    <Special nLength="0" nType="POR_MARGIN" rText="" nWidth="2335"/>
+    <Text nLength="17" nType="POR_TXT" nHeight="644" nWidth="4969"/>
+    <Special nLength="0" nType="POR_MARGIN" rText="" nWidth="2335"/>
+    <LineBreak nWidth="9639"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f841c017d78" id="369" symbol="11SwTextFrame" next="370" prev="368" upper="367" txtNodeIndex="10">
+    <infos>
+     <bounds left="4481" top="2302" width="9638" height="396" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="120" width="9638" height="276"/>
+    </infos>
+DUPRAT Thomas    <Text nLength="13" nType="POR_PARA" nHeight="276" nWidth="1758"/>
+    <LineBreak nWidth="1758"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f841c017e90" id="370" symbol="11SwTextFrame" next="371" prev="369" upper="367" txtNodeIndex="11">
+    <infos>
+     <bounds left="4481" top="2698" width="9638" height="457" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="276"/>
+    </infos>
+LOUX Guillaume     <Text nLength="15" nType="POR_PARA" nHeight="276" nWidth="1800"/>
+    <LineBreak nWidth="1800"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018060" id="371" symbol="11SwTextFrame" next="372" prev="370" upper="367" txtNodeIndex="12">
+    <infos>
+     <bounds left="4481" top="3155" width="9638" height="457" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="276"/>
+    </infos>
+https://github.com/L0ux/Projet_Moteur lien vers le projet    <Text nLength="37" nType="POR_TXT" nHeight="276" nWidth="3793"/>
+    <Text nLength="20" nType="POR_TXT" nHeight="276" nWidth="1733"/>
+    <LineBreak nWidth="5526"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018178" id="372" symbol="11SwTextFrame" next="373" prev="371" upper="367" txtNodeIndex="13">
+    <infos>
+     <bounds left="4481" top="3612" width="9638" height="1009" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="828"/>
+    </infos>
+Nous avons fait ce TP à deux car nous pensons c’est une partie importante de notre moteur de jeux et nous voulions réfléchir ensemble à comment serait géré le graphe de scène ainsi que les fonctions de transformation.    <Text nLength="98" nType="POR_PARA" nHeight="276" nWidth="9523"/>
+    <LineBreak nWidth="9523"/>
+    <Text nLength="100" nType="POR_TXT" nHeight="276" nWidth="9609"/>
+    <Text nLength="1" nType="POR_HOLE"/>
+    <LineBreak nWidth="9609"/>
+    <Text nLength="18" nType="POR_LAY" nHeight="276" nWidth="1760"/>
+    <LineBreak nWidth="1760"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018290" id="373" symbol="11SwTextFrame" next="374" prev="372" upper="367" txtNodeIndex="14">
+    <infos>
+     <bounds left="4481" top="4621" width="9638" height="276" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="0" width="9638" height="276"/>
+    </infos>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f84040183a8" id="374" symbol="11SwTextFrame" next="375" prev="373" upper="367" txtNodeIndex="15">
+    <infos>
+     <bounds left="4481" top="4897" width="9638" height="774" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="593"/>
+    </infos>
+Nous n’avons pas réussi à faire fonctionner le fichier Basic.IO pour charger un modèle .off, nous avons donc utilisé les cubes du premier TP pour représenter les différents astres.    <Text nLength="98" nType="POR_PARA" nHeight="276" nWidth="9355"/>
+    <LineBreak nWidth="9355"/>
+    <Text nLength="82" nType="POR_LAY" nHeight="276" nWidth="7693"/>
+    <LineBreak nWidth="7693"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f84040184c0" id="375" symbol="11SwTextFrame" next="376" prev="374" upper="367" txtNodeIndex="16">
+    <infos>
+     <bounds left="4481" top="5671" width="9638" height="457" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="276"/>
+    </infos>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f84040185d8" id="376" symbol="11SwTextFrame" next="377" prev="375" upper="367" txtNodeIndex="17">
+    <infos>
+     <bounds left="4481" top="6128" width="9638" height="743" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="421" width="9638" height="322"/>
+    </infos>
+GameObject et Transform    <Text nLength="23" nType="POR_PARA" nHeight="322" nWidth="3221"/>
+    <LineBreak nWidth="3221"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f84040186f0" id="377" symbol="11SwTextFrame" next="378" prev="376" upper="367" txtNodeIndex="18">
+    <infos>
+     <bounds left="4481" top="6871" width="9638" height="1347" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="120" width="9638" height="1227"/>
+    </infos>
+Nous avons donc un type Gameobject qui contient une liste des GameObjects fils, un nom ainsi qu’un type Transform.*Le type transform sauvegarde la matrice de l’objet et permet l’application des transformations sur notre objet, la rotation, la translation et la mise à l’échelle. Ces opérations fonctionnent.    <Text nLength="93" nType="POR_PARA" nHeight="276" nWidth="9244"/>
+    <LineBreak nWidth="9244"/>
+    <Text nLength="21" nType="POR_TXT" nHeight="276" nWidth="2154"/>
+    <Text nLength="1" nType="POR_BRK"/>
+    <LineBreak nWidth="2154"/>
+    <Text nLength="99" nType="POR_LAY" nHeight="276" nWidth="9436"/>
+    <LineBreak nWidth="9436"/>
+    <Text nLength="93" nType="POR_LAY" nHeight="276" nWidth="8403"/>
+    <LineBreak nWidth="8403"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018808" id="378" symbol="11SwTextFrame" next="379" prev="377" upper="367" txtNodeIndex="19">
+    <infos>
+     <bounds left="4481" top="8218" width="9638" height="1285" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="1104"/>
+    </infos>
+Nous ne sommes pas encore totalement d’accord sur comment le type Transform fonctionne. Actuellement il sauvegarde la dernière rotation, mise à l’echelle et translation effectuée et retourne au besoin la matrice modifier il est donc nécessaire à chaque opération de prendre en compte les opérations précédentes si on veut les garder.     <Text nLength="88" nType="POR_PARA" nHeight="276" nWidth="8971"/>
+    <LineBreak nWidth="8971"/>
+    <Text nLength="103" nType="POR_LAY" nHeight="276" nWidth="9531"/>
+    <LineBreak nWidth="9531"/>
+    <Text nLength="97" nType="POR_LAY" nHeight="276" nWidth="9296"/>
+    <LineBreak nWidth="9296"/>
+    <Text nLength="46" nType="POR_LAY" nHeight="276" nWidth="4292"/>
+    <LineBreak nWidth="4292"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018920" id="379" symbol="11SwTextFrame" next="380" prev="378" upper="367" txtNodeIndex="20">
+    <infos>
+     <bounds left="4481" top="9503" width="9638" height="276" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="0" width="9638" height="276"/>
+    </infos>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018a38" id="380" symbol="11SwTextFrame" next="381" prev="379" upper="367" txtNodeIndex="21">
+    <infos>
+     <bounds left="4481" top="9779" width="9638" height="774" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="593"/>
+    </infos>
+La lune est par exemple le GameObject fils de la terre qui est lui le GameObject fils du soleil.*La position donc de la lune se fait dans par rapport à la terre.    <Text nLength="96" nType="POR_TXT" nHeight="276" nWidth="9003"/>
+    <Text nLength="1" nType="POR_BRK"/>
+    <LineBreak nWidth="9003"/>
+    <Text nLength="64" nType="POR_LAY" nHeight="276" nWidth="5824"/>
+    <LineBreak nWidth="5824"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018b50" id="381" symbol="11SwTextFrame" next="382" prev="380" upper="367" txtNodeIndex="22">
+    <infos>
+     <bounds left="4481" top="10553" width="9638" height="743" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="421" width="9638" height="322"/>
+    </infos>
+Graphe de scène    <Text nLength="15" nType="POR_PARA" nHeight="322" nWidth="2148"/>
+    <LineBreak nWidth="2148"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018c68" id="382" symbol="11SwTextFrame" next="383" prev="381" upper="367" txtNodeIndex="23">
+    <infos>
+     <bounds left="4481" top="11296" width="9638" height="713" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="120" width="9638" height="593"/>
+    </infos>
+le graphe de scène est gérer par un GameObject « World » créer au lancement de l’application. Tout GameObject de la scène sera donc un fils de cet GameObject.    <Text nLength="48" nType="POR_TXT" nHeight="276" nWidth="4764"/>
+    <Special nLength="1" nType="POR_BLANK" rText=" "/>
+    <Text nLength="5" nType="POR_TXT" nHeight="276" nWidth="594"/>
+    <Special nLength="1" nType="POR_BLANK" rText=" "/>
+    <Text nLength="43" nType="POR_TXT" nHeight="276" nWidth="4104"/>
+    <Text nLength="1" nType="POR_HOLE"/>
+    <LineBreak nWidth="9582"/>
+    <Text nLength="59" nType="POR_LAY" nHeight="276" nWidth="5924"/>
+    <LineBreak nWidth="5924"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018d80" id="383" symbol="11SwTextFrame" next="384" prev="382" upper="367" txtNodeIndex="24">
+    <infos>
+     <bounds left="4481" top="12009" width="9638" height="774" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="181" width="9638" height="593"/>
+    </infos>
+Pour le moment nous n’avons pas encore de boucle efficace dans pour parcourir le graphe de scène de manière efficace pour mettre à  jour les GameObject.    <Text nLength="97" nType="POR_PARA" nHeight="276" nWidth="9572"/>
+    <LineBreak nWidth="9572"/>
+    <Text nLength="55" nType="POR_LAY" nHeight="276" nWidth="5380"/>
+    <LineBreak nWidth="5380"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404018e98" id="384" symbol="11SwTextFrame" next="385" prev="383" upper="367" txtNodeIndex="25">
+    <infos>
+     <bounds left="4481" top="12783" width="9638" height="743" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="421" width="9638" height="322"/>
+    </infos>
+Garder un rendu temps réel    <Text nLength="26" nType="POR_PARA" nHeight="322" nWidth="3439"/>
+    <LineBreak nWidth="3439"/>
+    <Finish/>
+   </txt>
+   <txt ptr="0x7f8404019068" id="385" symbol="11SwTextFrame" prev="384" upper="367" txtNodeIndex="26">
+    <infos>
+     <bounds left="4481" top="13526" width="9638" height="1347" mbFixSize="false" mbValidPos="true" mbValidSize="true" mbValidPrtArea="true"/>
+     <prtBounds left="0" top="120" width="9638" height="1227"/>
+    </infos>
+Pour garder un rendu en temps réel nous voulons tester une autre façon de calculer et de stocker le type Transform pour éviter le plus de calcul possible dans la boucle de rendu. Nous voulons tester aussi d'autres structure GamObject pour prendre en compte plusieurs types d'objets différents car pour le moment tous les objets sont identiques.    <Text nLength="100" nType="POR_PARA" nHeight="276" nWidth="9496"/>
+    <LineBreak nWidth="9496"/>
+    <Text nLength="99" nType="POR_LAY" nHeight="276" nWidth="9451"/>
+    <LineBreak nWidth="9451"/>
+    <Text nLength="98" nType="POR_LAY" nHeight="276" nWidth="9365"/>
+    <LineBreak nWidth="9365"/>
+    <Text nLength="47" nType="POR_LAY" nHeight="276" nWidth="4506"/>
+    <LineBreak nWidth="4506"/>
+    <Finish/>
+   </txt>
+  </body>
+ </page>
+</root>

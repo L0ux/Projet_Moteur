@@ -38,3 +38,13 @@ void GameObject::addPere(GameObject* p){
     pere = p;
     //qDebug() << "Je suis" << this->nom << "et j'ajoute" << p->nom << "comme père";;
 }
+
+QVector3D GameObject::getWorldPosition(){
+    QVector3D position = this->transform.getTranslation();
+    GameObject* p = this->pere;
+    while ( p != nullptr ){
+        position = position + pere->transform.getTranslation();
+        p = p->pere;
+    }
+    return position;
+}

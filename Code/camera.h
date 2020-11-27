@@ -9,8 +9,10 @@ public:
     //Attribu
     Camera(QString nom);
     QMatrix4x4 projection;
+    QMatrix4x4 v;
 
     //Methode
+    void lookAt(QVector3D  position,QVector3D target,QVector3D up);
     QMatrix4x4 mv();
     QMatrix4x4 vue();
     QMatrix4x4 model();

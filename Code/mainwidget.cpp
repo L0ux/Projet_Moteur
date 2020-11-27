@@ -81,7 +81,6 @@ MainWidget::MainWidget(QWidget *parent) :
     camera = new Camera("Camera");
     camera->transform.translate({0.0, 0.0, -70.0});
 
-
     //terre->addFils(camera);
     world.addFils(camera);
     world.addFils(soleil);
@@ -229,8 +228,10 @@ void MainWidget::resizeGL(int w, int h)
 
 void MainWidget::draw(QMatrix4x4 mvp,GameObject* object){
     QMatrix4x4 matrice = mvp * object->transform.computeModel();
-    program.setUniformValue("mvp_matrix", matrice);
-    geometries->drawCubeGeometry(&program);
+    if( object != camera){                                          //Pour ne pas dessiner la camera
+        program.setUniformValue("mvp_matrix", matrice);
+        geometries->drawCubeGeometry(&program);
+    }
     for( unsigned int i = 0; i < object->fils.size(); i++){
         draw(matrice,object->fils[i]);
     }
@@ -252,11 +253,15 @@ void MainWidget::paintGL()
     lune->transform.rotate({6.68,3.f * angle_rotation,0});
     terre->transform.rotate({23.44,-2.f * angle_rotation,0});
     soleil->transform.rotate({0,angle_rotation,0});
-    qDebug() << "world" << world.transform.computeModel();
-    qDebug() << "camera" << camera->model();
 
+    //qDebug() << "soleil" << soleil->transform.computeModel();
+    //qDebug() << "camera" << camera->projection*camera->vue();;
+
+    camera->lookAt(camera->getWorldPosition(),soleil->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
+
+    qDebug() << "terre" << terre->getWorldPosition();
     for( unsigned long i = 0; i < world.fils.size(); i++){
-        draw(camera->projection*camera->vue()*camera->model(),world.fils[i]);
+        draw(camera->projection*camera->vue(),world.fils[i]);
     }
 
     timerEvent(new QTimerEvent(0));
