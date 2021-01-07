@@ -4,20 +4,26 @@ TARGET = gameengine
 TEMPLATE = app
 
 SOURCES += main.cpp \
+    boundingbox.cpp \
     camera.cpp \
     gameobject.cpp \
-    transform.cpp
+    rigidbody.cpp \
+    transform.cpp \
+    vertex.cpp
 
 SOURCES += \
-    mainwidget.cpp \
+    OpenGl.cpp \
     geometryengine.cpp
 
 HEADERS += \
+    OpenGl.h \
+    boundingbox.h \
     camera.h \
     gameobject.h \
-    mainwidget.h \
     geometryengine.h \
-    transform.h
+    rigidbody.h \
+    transform.h \
+    vertex.h
 
 RESOURCES += \
     shaders.qrc \
@@ -26,3 +32,6 @@ RESOURCES += \
 # install
 target.path = $$[YOUR_PATH]
 INSTALLS += target
+
+FORMS += \
+    mainwindow.ui

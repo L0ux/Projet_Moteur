@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include "transform.h"
+#include "rigidbody.h"
 #include <QtDebug>
 
 class GameObject
@@ -11,10 +12,11 @@ public:
 
     //Attribut
     Transform transform;
+    RigidBody rigidBody;
+
     std::vector<GameObject*> fils;
     GameObject* pere;
     QString nom;
-
 
     //Methode
     void addFils(GameObject* f);
