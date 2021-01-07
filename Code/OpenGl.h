@@ -52,7 +52,6 @@
 #define MAINWIDGET_H
 
 #include "geometryengine.h"
-
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_1>
 #include <QMatrix4x4>
@@ -61,9 +60,11 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
+#include <QMouseEvent>
+#include <math.h>
 #include <stack>
 ///#include <glm/glm.hpp>
-#include "gameobject.h"
+#include "GameObject.h"
 #include "camera.h"
 
 class GeometryEngine;
@@ -104,7 +105,7 @@ private:
     QVector3D rotationAxis;
     qreal angularSpeed;
     QQuaternion rotation;
-    GameObject world;
+    GameObject * world;
     void keyPressEvent(QKeyEvent *event) override;
 };
 

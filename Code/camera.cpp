@@ -6,6 +6,12 @@ Camera::Camera(QString nom) : GameObject(nom)
     v = QMatrix4x4();
 }
 
+Camera::Camera(QString nom,GameObject * father) : GameObject(nom,father)
+{
+    projection = QMatrix4x4();
+    v = QMatrix4x4();
+}
+
 
 QMatrix4x4 Camera::mv(){
     return projection * transform.computeModel();

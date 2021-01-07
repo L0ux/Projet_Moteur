@@ -1,13 +1,14 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "gameobject.h"
+#include "GameObject.h"
 
 class Camera : public GameObject
 {
 public:
     //Attribu
     Camera(QString nom);
+    Camera(QString nom, GameObject * pere);
     QMatrix4x4 projection;
     QMatrix4x4 v;
 

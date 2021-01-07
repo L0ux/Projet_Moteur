@@ -2,6 +2,7 @@
 #define RIGIDBODY_H
 
 #include <QVector3D>
+#include <QDebug>
 
 class RigidBody
 {
@@ -13,6 +14,8 @@ class RigidBody
 
 public:
     RigidBody();
+
+    void print();
 };
 
 #endif // RIGIDBODY_H

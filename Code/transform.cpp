@@ -101,10 +101,11 @@ Transform Transform::combine_with(Transform & t){
     return *this;
 };
 
-void Transform::printTransform(){
-    qDebug() << "Scale =" << localScale;
-    qDebug() << "Rotation =" << localRotation;
-    qDebug() << "Translation =" << localTranslation;
+void Transform::print(){
+    qDebug() << "Transform:";
+    qDebug() << "\tScale =" << localScale;
+    qDebug() << "\tRotation =" << localRotation;
+    qDebug() << "\tTranslation =" << localTranslation;
 }
 
 void Transform::lRotate(QVector3D r){

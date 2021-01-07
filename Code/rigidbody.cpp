@@ -4,3 +4,8 @@ RigidBody::RigidBody()
 {
 
 }
+
+
+void RigidBody::print(){
+    qInfo() << "RigidBody:";
+}

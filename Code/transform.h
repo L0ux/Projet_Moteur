@@ -31,7 +31,7 @@ public:
     void setModel(QMatrix4x4 m);
     QMatrix4x4 computeModel();
     Transform combine_with(Transform & t);
-    void printTransform();
+    void print();
 
     //Version LOUX
     QMatrix4x4 lModel;

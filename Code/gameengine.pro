@@ -4,9 +4,9 @@ TARGET = gameengine
 TEMPLATE = app
 
 SOURCES += main.cpp \
+    GameObject.cpp \
     boundingbox.cpp \
     camera.cpp \
-    gameobject.cpp \
     rigidbody.cpp \
     transform.cpp \
     vertex.cpp
@@ -16,10 +16,10 @@ SOURCES += \
     geometryengine.cpp
 
 HEADERS += \
+    GameObject.h \
     OpenGl.h \
     boundingbox.h \
     camera.h \
-    gameobject.h \
     geometryengine.h \
     rigidbody.h \
     transform.h \

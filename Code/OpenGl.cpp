@@ -50,9 +50,7 @@
 
 #include "OpenGl.h"
 
-#include <QMouseEvent>
 
-#include <math.h>
 
 float angle_rotation = 0.f;
 
@@ -60,31 +58,43 @@ OpenGl::OpenGl(QWidget *parent) :
     QOpenGLWidget(parent),
     geometries(0),
     texture(0),
-    angularSpeed(0),
-    world("World")
+    angularSpeed(0)
 {
-    GameObject* lune = new GameObject("Lune");
+    world = GameObject::_world;
+
+    GameObject* soleil = new GameObject("Soleil");
+    GameObject* terre = new GameObject("Terre",soleil);
+    GameObject* lune = new GameObject("Lune",terre);
+
+
     lune->transform.scale(0.3);
     lune->transform.translate({0,2,2});
     lune->transform.rotate({6.68,3.f,0});
 
-    GameObject* terre = new GameObject("Terre");
     terre->transform.scale(0.3);
     terre->transform.translate({10,0,0});
     terre->transform.rotate({23.44,-2.f,0});
-    terre->addFils(lune);
 
-    GameObject* soleil = new GameObject("Soleil");
     soleil->transform.scale(7);
-    soleil->addFils(terre);
 
     camera = new Camera("Camera");
     camera->transform.translate({0.0, 0.0, -70.0});
+    camera->lookAt(camera->getWorldPosition(),soleil->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
 
     //terre->addFils(camera);
-    world.addFils(camera);
-    world.addFils(soleil);
+    //world.addFils(camera);
+    //world.addFils(soleil);
     //world.printFils();
+
+    /*GameObject * cube_1 = new GameObject("Cube_1", &world);
+    GameObject * cube_2 = new GameObject("Cube_2", &world);
+    GameObject * cube_3 = new GameObject("Cube_3", &world);
+
+    cube_1->transform.translate({0,30,0});
+    cube_2->transform.translate({0,15,0});
+
+    camera = new Camera("Camera",&world);
+    camera->transform.translate({0,15,10});*/
 }
 
 OpenGl::~OpenGl()
@@ -94,6 +104,7 @@ OpenGl::~OpenGl()
     makeCurrent();
     delete texture;
     delete geometries;
+    delete world;
     doneCurrent();
 }
 
@@ -151,7 +162,6 @@ void OpenGl::initializeGL()
 
     initShaders();
     initTextures();
-
 
     // Enable depth buffer
     glEnable(GL_DEPTH_TEST);
@@ -237,7 +247,7 @@ void OpenGl::paintGL()
 
     texture->bind();
 
-    GameObject* soleil = world.getObject("Soleil");
+    GameObject* soleil = world->getObject("Soleil");
     GameObject* terre = soleil->getObject("Terre");
     GameObject* lune =  terre->getObject("Lune");
 
@@ -245,18 +255,17 @@ void OpenGl::paintGL()
     terre->transform.rotate({23.44,-2.f * angle_rotation,0});
     soleil->transform.rotate({0,angle_rotation,0});
 
-    //qDebug() << "soleil" << soleil->transform.computeModel();
-    //qDebug() << "camera" << camera->projection*camera->vue();;
-
-    camera->lookAt(camera->getWorldPosition(),soleil->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
-
+    qDebug() << "soleil" << soleil->transform.computeModel();
+    qDebug() << "camera" << camera->projection*camera->vue();
     qDebug() << "terre" << terre->getWorldPosition();
-    for( unsigned long i = 0; i < world.fils.size(); i++){
-        draw(camera->projection*camera->vue(),world.fils[i]);
+
+
+    // Actual Rendering
+    for( unsigned long i = 0; i < world->fils.size(); i++){
+        draw(camera->projection*camera->vue(),world->fils[i]);
     }
 
     timerEvent(new QTimerEvent(0));
-
 }
 
 void OpenGl::keyPressEvent(QKeyEvent *event)
