@@ -249,6 +249,8 @@ void OpenGl::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
+    BoundingBox bb({0,0,0},{10,10,10});
+    bb.render(&program);
     texture->bind();
 
    /* GameObject* soleil = world->getObject("Soleil");

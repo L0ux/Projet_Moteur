@@ -3,11 +3,13 @@
 
 #include <QVector3D>
 #include <QDebug>
+#include "boundingbox.h"
 
 class RigidBody
 {
     bool _hasGravity;
     bool _isMovable;
+    bool _detectsCollisions;
     float _speed;
     float _acceleration;
     float _mass;
@@ -24,6 +26,9 @@ public:
 
     bool isMovable();
     void isMovable(bool value);
+
+    bool detectsCollision();
+    void detectsCollision(bool value);
 
     float speed();
     void speed(float sp);

@@ -21,6 +21,14 @@ void RigidBody::isMovable(bool value){
     _isMovable = value;
 }
 
+bool RigidBody::detectsCollision(){
+    return _detectsCollisions;
+}
+
+void RigidBody::detectsCollision(bool value){
+    _detectsCollisions = value;
+}
+
 float RigidBody::speed(){
     return _speed;
 }
