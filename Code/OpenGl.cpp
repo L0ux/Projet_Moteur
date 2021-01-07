@@ -61,7 +61,7 @@ OpenGl::OpenGl(QWidget *parent) :
     angularSpeed(0)
 {
     world = GameObject::_world;
-
+/*
     GameObject* soleil = new GameObject("Soleil");
     GameObject* terre = new GameObject("Terre",soleil);
     GameObject* lune = new GameObject("Lune",terre);
@@ -79,22 +79,27 @@ OpenGl::OpenGl(QWidget *parent) :
 
     camera = new Camera("Camera");
     camera->transform.translate({0.0, 0.0, -70.0});
-    camera->lookAt(camera->getWorldPosition(),soleil->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
+    camera->lookAt(camera->getWorldPosition(),soleil->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));*/
 
     //terre->addFils(camera);
     //world.addFils(camera);
     //world.addFils(soleil);
     //world.printFils();
 
-    /*GameObject * cube_1 = new GameObject("Cube_1", &world);
-    GameObject * cube_2 = new GameObject("Cube_2", &world);
-    GameObject * cube_3 = new GameObject("Cube_3", &world);
+    GameObject * cube_1 = new GameObject("Cube_1");
+    GameObject * cube_2 = new GameObject("Cube_2");
+    GameObject * cube_3 = new GameObject("Cube_3");
+    GameObject * cube_4 = new GameObject("Cube_4",cube_1);
 
-    cube_1->transform.translate({0,30,0});
-    cube_2->transform.translate({0,15,0});
+    cube_1->transform.translate({0,20,0});
+    cube_2->transform.translate({0,10,0});
+    cube_3->rigidBody.hasGravity(false);
+    cube_4->transform.translate({5,0,0});
 
-    camera = new Camera("Camera",&world);
-    camera->transform.translate({0,15,10});*/
+    camera = new Camera("Camera");
+    camera->transform.translate({0,10,-70});
+    camera->lookAt(camera->getWorldPosition(),cube_2->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
+
 }
 
 OpenGl::~OpenGl()
@@ -133,7 +138,6 @@ void OpenGl::mouseReleaseEvent(QMouseEvent *e)
     angularSpeed += acc;
 }
 
-
 void OpenGl::timerEvent(QTimerEvent *)
 {
     // Decrease angular speed (friction)
@@ -169,7 +173,7 @@ void OpenGl::initializeGL()
     // Enable back face culling
     glEnable(GL_CULL_FACE);
 
-    geometries = new GeometryEngine;
+    geometries = new MeshBuilder;
 
     // Use QBasicTimer because its faster than QTimer
     timer.start(12, this);
@@ -247,7 +251,7 @@ void OpenGl::paintGL()
 
     texture->bind();
 
-    GameObject* soleil = world->getObject("Soleil");
+   /* GameObject* soleil = world->getObject("Soleil");
     GameObject* terre = soleil->getObject("Terre");
     GameObject* lune =  terre->getObject("Lune");
 
@@ -257,11 +261,24 @@ void OpenGl::paintGL()
 
     qDebug() << "soleil" << soleil->transform.computeModel();
     qDebug() << "camera" << camera->projection*camera->vue();
-    qDebug() << "terre" << terre->getWorldPosition();
+    qDebug() << "terre" << terre->getWorldPosition();*/
 
 
     // Actual Rendering
     for( unsigned long i = 0; i < world->fils.size(); i++){
+        if(world->fils[i]->rigidBody.isMovable()){
+            if(world->fils[i]->rigidBody.hasGravity()){
+                QVector3D position = world->fils[i]->transform.getTranslation();
+                float speed = world->fils[i]->rigidBody.speed();
+                qDebug() << "ancienne position " << position;
+                qDebug() << "ancienne vitesse " << speed;
+                Physics::computeGravityEffect(position,speed);
+                world->fils[i]->transform.translate(position);
+                world->fils[i]->rigidBody.speed(speed);
+                qDebug() << "nouvelle position " << position;
+                qDebug() << "nouvelle vitesse " << speed;
+            }
+        }
         draw(camera->projection*camera->vue(),world->fils[i]);
     }
 

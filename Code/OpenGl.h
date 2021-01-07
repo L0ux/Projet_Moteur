@@ -51,7 +51,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include "geometryengine.h"
+#include "MeshBuilder.h"
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_1>
 #include <QMatrix4x4>
@@ -65,9 +65,10 @@
 #include <stack>
 ///#include <glm/glm.hpp>
 #include "GameObject.h"
-#include "camera.h"
+#include "Camera.h"
+#include "Physics.h"
 
-class GeometryEngine;
+class MeshBuilder;
 
 class OpenGl : public QOpenGLWidget, protected QOpenGLFunctions_3_1
 {
@@ -94,7 +95,7 @@ protected:
 private:
     QBasicTimer timer;
     QOpenGLShaderProgram program;
-    GeometryEngine *geometries;
+    MeshBuilder *geometries;
 
     QOpenGLTexture *texture;
 

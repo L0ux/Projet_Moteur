@@ -1,14 +1,12 @@
 #include "GameObject.h"
 
-
-
 GameObject::GameObject()
 {
     nom = "World";
     transform = Transform();
+    rigidBody = RigidBody();
     pere = nullptr;
 }
-
 
 GameObject * GameObject::_world = new GameObject();
 
@@ -16,6 +14,7 @@ GameObject::GameObject(QString n)
 {
     nom = n;
     transform = Transform();
+    rigidBody = RigidBody();
     GameObject::_world->addFils(this);
 }
 
@@ -23,6 +22,7 @@ GameObject::GameObject(QString n, GameObject * father)
 {
     nom = n;
     transform = Transform();
+    rigidBody = RigidBody();
     father->addFils(this);
 }
 

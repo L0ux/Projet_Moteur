@@ -4,25 +4,27 @@ TARGET = gameengine
 TEMPLATE = app
 
 SOURCES += main.cpp \
+    Camera.cpp \
     GameObject.cpp \
+    Physics.cpp \
+    RigidBody.cpp \
+    Transform.cpp \
     boundingbox.cpp \
-    camera.cpp \
-    rigidbody.cpp \
-    transform.cpp \
     vertex.cpp
 
 SOURCES += \
-    OpenGl.cpp \
-    geometryengine.cpp
+    MeshBuilder.cpp \
+    OpenGl.cpp
 
 HEADERS += \
+    Camera.h \
     GameObject.h \
+    MeshBuilder.h \
     OpenGl.h \
+    Physics.h \
+    RigidBody.h \
+    Transform.h \
     boundingbox.h \
-    camera.h \
-    geometryengine.h \
-    rigidbody.h \
-    transform.h \
     vertex.h
 
 RESOURCES += \

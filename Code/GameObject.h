@@ -1,8 +1,8 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "transform.h"
-#include "rigidbody.h"
+#include "Transform.h"
+#include "RigidBody.h"
 #include <QtDebug>
 
 class GameObject
