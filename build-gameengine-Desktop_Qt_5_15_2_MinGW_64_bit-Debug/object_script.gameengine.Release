@@ -1,0 +1,13 @@
+release/main.o
+release/Camera.o
+release/GameObject.o
+release/Physics.o
+release/RigidBody.o
+release/Transform.o
+release/boundingbox.o
+release/vertex.o
+release/MeshBuilder.o
+release/OpenGl.o
+release/qrc_shaders.o
+release/qrc_textures.o
+release/moc_OpenGl.o
