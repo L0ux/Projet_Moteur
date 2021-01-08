@@ -57,6 +57,8 @@ SOURCES       = ..\Code\main.cpp \
 		..\Code\RigidBody.cpp \
 		..\Code\Transform.cpp \
 		..\Code\boundingbox.cpp \
+		..\Code\common.cpp \
+		..\Code\mesh.cpp \
 		..\Code\vertex.cpp \
 		..\Code\MeshBuilder.cpp \
 		..\Code\OpenGl.cpp release\qrc_shaders.cpp \
@@ -69,6 +71,8 @@ OBJECTS       = release\main.obj \
 		release\RigidBody.obj \
 		release\Transform.obj \
 		release\boundingbox.obj \
+		release\common.obj \
+		release\mesh.obj \
 		release\vertex.obj \
 		release\MeshBuilder.obj \
 		release\OpenGl.obj \
@@ -84,6 +88,8 @@ DIST          =  ..\Code\Camera.h \
 		..\Code\RigidBody.h \
 		..\Code\Transform.h \
 		..\Code\boundingbox.h \
+		..\Code\common.h \
+		..\Code\mesh.h \
 		..\Code\vertex.h ..\Code\main.cpp \
 		..\Code\Camera.cpp \
 		..\Code\GameObject.cpp \
@@ -91,6 +97,8 @@ DIST          =  ..\Code\Camera.h \
 		..\Code\RigidBody.cpp \
 		..\Code\Transform.cpp \
 		..\Code\boundingbox.cpp \
+		..\Code\common.cpp \
+		..\Code\mesh.cpp \
 		..\Code\vertex.cpp \
 		..\Code\MeshBuilder.cpp \
 		..\Code\OpenGl.cpp
@@ -170,7 +178,7 @@ all: Makefile.Release  release\gameengine.exe
 
 release\gameengine.exe: D:\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Widgets.lib D:\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Gui.lib D:\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Core.lib D:\Softwares\Qt\5.15.0\msvc2019\lib\qtmain.lib ui_mainwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\main.obj release\Camera.obj release\GameObject.obj release\Physics.obj release\RigidBody.obj release\Transform.obj release\boundingbox.obj release\vertex.obj release\MeshBuilder.obj release\OpenGl.obj release\qrc_shaders.obj release\qrc_textures.obj release\moc_OpenGl.obj
+release\main.obj release\Camera.obj release\GameObject.obj release\Physics.obj release\RigidBody.obj release\Transform.obj release\boundingbox.obj release\common.obj release\mesh.obj release\vertex.obj release\MeshBuilder.obj release\OpenGl.obj release\qrc_shaders.obj release\qrc_textures.obj release\moc_OpenGl.obj
 $(LIBS)
 <<
 
@@ -180,10 +188,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) gameengine.zip $(SOURCES) $(DIST) ..\Code\gameengine.pro ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\spec_pre.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\angle.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\windows-desktop.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\windows-vulkan.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\msvc-desktop.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\qconfig.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3drender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bodymovin_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_charts.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_core.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_designer.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gui.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_help.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_location.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_network.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qml.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3d.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3d_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dassetimport.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dassetimport_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3drender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3drender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3druntimerender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3druntimerender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dutils.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dutils_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_repparser.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_script.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_script_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scxml.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sql.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_studio3d.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_studio3d_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_svg.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_virtualkeyboard.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_virtualkeyboard_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webengine.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webengine_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginecore.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginecore_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginewidgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginewidgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webview.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webview_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xml.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qt_functions.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qt_config.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\win32-msvc\qmake.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\exclusive_builds.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\msvc-version.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\toolchain.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\default_pre.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\default_pre.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\resolve_config.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\exclusive_builds_post.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\default_post.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\build_pass.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qml_debug.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\precompile_header.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\warn_on.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qt.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\resources_functions.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\resources.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\moc.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\opengl.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\uic.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qmake_use.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\file_copies.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\windows.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\testcase_targets.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\exceptions.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\yacc.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\lex.prf ..\Code\gameengine.pro ..\Code\shaders.qrc ..\Code\textures.qrc ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Widgets.prl ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Gui.prl ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Core.prl ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\qtmain.prl   ..\Code\shaders.qrc ..\Code\textures.qrc ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\data\dummy.cpp ..\Code\Camera.h ..\Code\GameObject.h ..\Code\MeshBuilder.h ..\Code\OpenGl.h ..\Code\Physics.h ..\Code\RigidBody.h ..\Code\Transform.h ..\Code\boundingbox.h ..\Code\vertex.h  ..\Code\main.cpp ..\Code\Camera.cpp ..\Code\GameObject.cpp ..\Code\Physics.cpp ..\Code\RigidBody.cpp ..\Code\Transform.cpp ..\Code\boundingbox.cpp ..\Code\vertex.cpp ..\Code\MeshBuilder.cpp ..\Code\OpenGl.cpp ..\Code\mainwindow.ui    
+	$(ZIP) gameengine.zip $(SOURCES) $(DIST) ..\Code\gameengine.pro ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\spec_pre.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\angle.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\windows-desktop.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\windows-vulkan.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\msvc-desktop.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\qconfig.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3drender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bodymovin_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_charts.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_core.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_designer.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gui.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_help.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_location.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_network.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qml.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3d.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3d_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dassetimport.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dassetimport_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3drender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3drender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3druntimerender.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3druntimerender_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dutils.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick3dutils_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_repparser.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_script.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_script_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scxml.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sql.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_studio3d.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_studio3d_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_svg.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_virtualkeyboard.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_virtualkeyboard_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webengine.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webengine_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginecore.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginecore_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginewidgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webenginewidgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webview.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_webview_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xml.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qt_functions.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qt_config.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\win32-msvc\qmake.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\exclusive_builds.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\common\msvc-version.conf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\toolchain.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\default_pre.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\default_pre.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\resolve_config.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\exclusive_builds_post.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\default_post.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\build_pass.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qml_debug.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\precompile_header.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\warn_on.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qt.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\resources_functions.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\resources.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\moc.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\opengl.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\uic.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\qmake_use.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\file_copies.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\win32\windows.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\testcase_targets.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\exceptions.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\yacc.prf ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\lex.prf ..\Code\gameengine.pro ..\Code\shaders.qrc ..\Code\textures.qrc ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Widgets.prl ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Gui.prl ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\Qt5Core.prl ..\..\..\Softwares\Qt\5.15.0\msvc2019\lib\qtmain.prl   ..\Code\shaders.qrc ..\Code\textures.qrc ..\..\..\Softwares\Qt\5.15.0\msvc2019\mkspecs\features\data\dummy.cpp ..\Code\Camera.h ..\Code\GameObject.h ..\Code\MeshBuilder.h ..\Code\OpenGl.h ..\Code\Physics.h ..\Code\RigidBody.h ..\Code\Transform.h ..\Code\boundingbox.h ..\Code\common.h ..\Code\mesh.h ..\Code\vertex.h  ..\Code\main.cpp ..\Code\Camera.cpp ..\Code\GameObject.cpp ..\Code\Physics.cpp ..\Code\RigidBody.cpp ..\Code\Transform.cpp ..\Code\boundingbox.cpp ..\Code\common.cpp ..\Code\mesh.cpp ..\Code\vertex.cpp ..\Code\MeshBuilder.cpp ..\Code\OpenGl.cpp ..\Code\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.obj release\Camera.obj release\GameObject.obj release\Physics.obj release\RigidBody.obj release\Transform.obj release\boundingbox.obj release\vertex.obj release\MeshBuilder.obj release\OpenGl.obj release\qrc_shaders.obj release\qrc_textures.obj release\moc_OpenGl.obj
+	-$(DEL_FILE) release\main.obj release\Camera.obj release\GameObject.obj release\Physics.obj release\RigidBody.obj release\Transform.obj release\boundingbox.obj release\common.obj release\mesh.obj release\vertex.obj release\MeshBuilder.obj release\OpenGl.obj release\qrc_shaders.obj release\qrc_textures.obj release\moc_OpenGl.obj
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -328,11 +336,10 @@ release\moc_OpenGl.cpp: ..\Code\OpenGl.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
-		..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
-		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
@@ -367,6 +374,9 @@ release\moc_OpenGl.cpp: ..\Code\OpenGl.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h \
+		..\Code\boundingbox.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QQuaternion \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QBasicTimer \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbasictimer.h \
@@ -375,6 +385,7 @@ release\moc_OpenGl.cpp: ..\Code\OpenGl.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMouseEvent \
 		..\Code\GameObject.h \
 		..\Code\RigidBody.h \
+		..\Code\mesh.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QtDebug \
 		..\Code\Camera.h \
 		..\Code\Physics.h \
@@ -548,14 +559,16 @@ release\main.obj: ..\Code\main.cpp ..\..\..\Softwares\Qt\5.15.0\msvc2019\include
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
-		..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
-		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h \
+		..\Code\boundingbox.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QQuaternion \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QBasicTimer \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbasictimer.h \
@@ -564,13 +577,14 @@ release\main.obj: ..\Code\main.cpp ..\..\..\Softwares\Qt\5.15.0\msvc2019\include
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMouseEvent \
 		..\Code\GameObject.h \
 		..\Code\RigidBody.h \
+		..\Code\mesh.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QtDebug \
 		..\Code\Camera.h \
 		..\Code\Physics.h
 
 release\Camera.obj: ..\Code\Camera.cpp ..\Code\Camera.h \
 		..\Code\GameObject.h \
-		..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector3d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtguiglobal.h \
@@ -616,6 +630,8 @@ release\Camera.obj: ..\Code\Camera.cpp ..\Code\Camera.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpair.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
@@ -650,12 +666,71 @@ release\Camera.obj: ..\Code\Camera.cpp ..\Code\Camera.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h \
 		..\Code\RigidBody.h \
+		..\Code\boundingbox.h \
+		..\Code\mesh.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QtDebug
 
 release\GameObject.obj: ..\Code\GameObject.cpp ..\Code\GameObject.h \
-		..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector3d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtguiglobal.h \
@@ -701,6 +776,8 @@ release\GameObject.obj: ..\Code\GameObject.cpp ..\Code\GameObject.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpair.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
@@ -735,8 +812,67 @@ release\GameObject.obj: ..\Code\GameObject.cpp ..\Code\GameObject.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h \
 		..\Code\RigidBody.h \
+		..\Code\boundingbox.h \
+		..\Code\mesh.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QtDebug
 
 release\Physics.obj: ..\Code\Physics.cpp ..\Code\Physics.h \
@@ -855,9 +991,83 @@ release\RigidBody.obj: ..\Code\RigidBody.cpp ..\Code\RigidBody.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qset.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontiguouscache.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer.h \
-		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer_impl.h
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer_impl.h \
+		..\Code\boundingbox.h \
+		..\Code\common.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qgenericmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdatastream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix4x4.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qquaternion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
+		..\Code\Transform.h \
+		..\Code\mesh.h
 
 release\Transform.obj: ..\Code\Transform.cpp ..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector3d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtguiglobal.h \
@@ -903,6 +1113,8 @@ release\Transform.obj: ..\Code\Transform.cpp ..\Code\Transform.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpair.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
@@ -937,9 +1149,486 @@ release\Transform.obj: ..\Code\Transform.cpp ..\Code\Transform.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug
 
-release\boundingbox.obj: ..\Code\boundingbox.cpp ..\Code\boundingbox.h
+release\boundingbox.obj: ..\Code\boundingbox.cpp ..\Code\boundingbox.h \
+		..\Code\common.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector3d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtguiglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qconfig.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtcore-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsystemdetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qprocessordetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcompilerdetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtypeinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsysinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlogging.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qflags.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbasicatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qgenericatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_msvc.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qglobalstatic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmutex.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qnumeric.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qversiontagging.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtgui-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpoint.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qnamespace.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmetatype.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbytearray.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrefcount.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qarraydata.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvarlengtharray.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontainerfwd.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qalgorithms.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qhashfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstring.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qchar.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringliteral.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringalgorithms.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringview.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringbuilder.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpair.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qgenericmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdebug.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qhash.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qiterator.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvector.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbytearraylist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringlist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qregexp.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringmatcher.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtextstream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qiodevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobject.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcoreevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qscopedpointer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobject_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlocale.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvariant.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qshareddata.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qset.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontiguouscache.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdatastream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix4x4.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qquaternion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h
+
+release\common.obj: ..\Code\common.cpp ..\Code\common.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector3d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtguiglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qconfig.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtcore-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsystemdetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qprocessordetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcompilerdetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtypeinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsysinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlogging.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qflags.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbasicatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qgenericatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_msvc.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qglobalstatic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmutex.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qnumeric.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qversiontagging.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtgui-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpoint.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qnamespace.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmetatype.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbytearray.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrefcount.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qarraydata.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvarlengtharray.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontainerfwd.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qalgorithms.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qhashfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstring.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qchar.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringliteral.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringalgorithms.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringview.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringbuilder.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpair.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qgenericmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdebug.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qhash.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qiterator.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvector.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbytearraylist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringlist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qregexp.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringmatcher.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtextstream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qiodevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobject.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcoreevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qscopedpointer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobject_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlocale.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvariant.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qshareddata.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qset.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontiguouscache.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdatastream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix4x4.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qquaternion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug
+
+release\mesh.obj: ..\Code\mesh.cpp ..\Code\mesh.h \
+		..\Code\common.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector3d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtguiglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qconfig.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtcore-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsystemdetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qprocessordetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcompilerdetection.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtypeinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsysinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlogging.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qflags.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbasicatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qgenericatomic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qatomic_msvc.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qglobalstatic.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmutex.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qnumeric.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qversiontagging.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtgui-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpoint.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qnamespace.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmetatype.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbytearray.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrefcount.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qarraydata.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvarlengtharray.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontainerfwd.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qalgorithms.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qhashfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstring.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qchar.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringliteral.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringalgorithms.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringview.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringbuilder.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qpair.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector2d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qvector4d.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qgenericmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdebug.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qhash.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qiterator.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvector.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbytearraylist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringlist.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qregexp.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qstringmatcher.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qtextstream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qiodevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobject.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcoreevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qscopedpointer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qobject_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qlocale.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qvariant.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qshareddata.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qset.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qcontiguouscache.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qdatastream.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix4x4.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qquaternion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qrect.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qmargins.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qsize.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QSurfaceFormat \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qsurfaceformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qt_windows.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES3\gl3platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\KHR\khrplatform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtANGLE\GLES2\gl2platform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopengles2ext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLBuffer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLShaderProgram \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglshaderprogram.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLFunctions_3_1 \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglfunctions_3_1.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QOpenGLVersionFunctions \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglversionfunctions.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglcontext.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QObject \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QScopedPointer \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug
 
 release\vertex.obj: ..\Code\vertex.cpp ..\Code\vertex.h
 
@@ -1044,11 +1733,47 @@ release\MeshBuilder.obj: ..\Code\MeshBuilder.cpp ..\Code\MeshBuilder.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
-		..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
-		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QWidget \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qwidget.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpaintdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpalette.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcolor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgb.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qrgba64.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qbrush.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qmatrix.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpolygon.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qregion.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qline.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtransform.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qimage.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixelformat.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qpixmap.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfont.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontmetrics.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qfontinfo.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qsizepolicy.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qcursor.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qkeysequence.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qevent.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurl.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qurlquery.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h \
+		..\Code\boundingbox.h
 
 release\OpenGl.obj: ..\Code\OpenGl.cpp ..\Code\OpenGl.h \
 		..\Code\MeshBuilder.h \
@@ -1152,11 +1877,10 @@ release\OpenGl.obj: ..\Code\OpenGl.cpp ..\Code\OpenGl.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qopenglbuffer.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector2D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector3D \
-		..\Code\Transform.h \
+		..\Code\common.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QVector4D \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix3x3 \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMatrix4x4 \
-		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\QOpenGLWidget \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qopenglwidget.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtWidgets\qtwidgetsglobal.h \
@@ -1191,6 +1915,9 @@ release\OpenGl.obj: ..\Code\OpenGl.cpp ..\Code\OpenGl.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfile.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qfiledevice.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\qtouchdevice.h \
+		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QDebug \
+		..\Code\Transform.h \
+		..\Code\boundingbox.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QQuaternion \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QBasicTimer \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\qbasictimer.h \
@@ -1199,6 +1926,7 @@ release\OpenGl.obj: ..\Code\OpenGl.cpp ..\Code\OpenGl.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtGui\QMouseEvent \
 		..\Code\GameObject.h \
 		..\Code\RigidBody.h \
+		..\Code\mesh.h \
 		..\..\..\Softwares\Qt\5.15.0\msvc2019\include\QtCore\QtDebug \
 		..\Code\Camera.h \
 		..\Code\Physics.h

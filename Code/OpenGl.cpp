@@ -87,18 +87,21 @@ OpenGl::OpenGl(QWidget *parent) :
     //world.printFils();
 
     GameObject * cube_1 = new GameObject("Cube_1");
+    cube_1->print();
     GameObject * cube_2 = new GameObject("Cube_2");
     GameObject * cube_3 = new GameObject("Cube_3");
     GameObject * cube_4 = new GameObject("Cube_4",cube_1);
 
-    cube_1->transform.translate({0,20,0});
-    cube_2->transform.translate({0,10,0});
+    cube_1->Translate({0,20,0});
+    cube_1->print();
+    cube_2->Translate({0,10,0});
     cube_3->rigidBody.hasGravity(false);
-    cube_4->transform.translate({5,0,0});
+    cube_4->Translate({5,0,0});
 
     camera = new Camera("Camera");
-    camera->transform.translate({0,10,-70});
-    camera->lookAt(camera->getWorldPosition(),cube_2->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
+    camera->Translate({0,10,-20});
+    //camera->lookAt(camera->getWorldPosition(),cube_2->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
+    camera->lookAt(camera->getWorldPosition(),{0,5,0},QVector3D(0.0f, 1.0f, 0.0f));
 
 }
 
@@ -232,7 +235,7 @@ void OpenGl::resizeGL(int w, int h)
 }
 
 void OpenGl::draw(QMatrix4x4 mvp,GameObject* object){
-    QMatrix4x4 matrice = mvp * object->transform.computeModel();
+    QMatrix4x4 matrice = mvp * object->Transform().computeModel();
     if( object != camera){                                          //Pour ne pas dessiner la camera
         program.setUniformValue("mvp_matrix", matrice);
         geometries->drawCubeGeometry(&program);
@@ -242,15 +245,15 @@ void OpenGl::draw(QMatrix4x4 mvp,GameObject* object){
     }
 }
 
+
 void OpenGl::paintGL()
 {
-
     // Clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
-    BoundingBox bb({0,0,0},{10,10,10});
-    bb.render(&program);
+
+
     texture->bind();
 
    /* GameObject* soleil = world->getObject("Soleil");
@@ -270,12 +273,12 @@ void OpenGl::paintGL()
     for( unsigned long i = 0; i < world->fils.size(); i++){
         if(world->fils[i]->rigidBody.isMovable()){
             if(world->fils[i]->rigidBody.hasGravity()){
-                QVector3D position = world->fils[i]->transform.getTranslation();
+                QVector3D position = world->fils[i]->Transform().getTranslation();
                 float speed = world->fils[i]->rigidBody.speed();
                 qDebug() << "ancienne position " << position;
                 qDebug() << "ancienne vitesse " << speed;
                 Physics::computeGravityEffect(position,speed);
-                world->fils[i]->transform.translate(position);
+                world->fils[i]->Translate(position);
                 world->fils[i]->rigidBody.speed(speed);
                 qDebug() << "nouvelle position " << position;
                 qDebug() << "nouvelle vitesse " << speed;

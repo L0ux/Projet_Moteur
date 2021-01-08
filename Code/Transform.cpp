@@ -67,7 +67,7 @@ QVector3D Transform::getRotation(){
     return localRotation;
 };
 
-Transform Transform::rotate(QVector3D r){
+Transform Transform::rotate(QVector3D& r){
     localRotation = r;
     return *this;
 }
@@ -76,7 +76,7 @@ QVector3D Transform::getTranslation(){
     return localTranslation;
 }
 
-Transform Transform::translate(QVector3D v){
+Transform Transform::translate(QVector3D& v){
     localTranslation = v;
     return *this;
 }
@@ -108,7 +108,7 @@ void Transform::print(){
     qDebug() << "\tTranslation =" << localTranslation;
 }
 
-void Transform::lRotate(QVector3D r){
+void Transform::lRotate(QVector3D& r){
     QMatrix4x4 rX;
     QMatrix4x4 rY;
     QMatrix4x4 rZ;
@@ -138,7 +138,7 @@ void Transform::lRotate(QVector3D r){
     lModel =  lModel * rZ * rY * rX;
 }
 
-void Transform::lTranslate(QVector3D t){
+void Transform::lTranslate(QVector3D& t){
     QMatrix4x4 m;
     m(0,3) = t[0];
     m(1,3) = t[1];

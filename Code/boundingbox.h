@@ -1,13 +1,10 @@
 #ifndef BOUNDINGBOX_H
 #define BOUNDINGBOX_H
 
-#include <QVector3D>
-#include <QDebug>
-#include <QOpenGLWidget>
-#include <QOpenGLBuffer>
-#include <QOpenGLShaderProgram>
-#include <QOpenGLFunctions_3_1>
-#include <QWidget>
+
+#include "common.h"
+#include "Transform.h"
+
 
 // On fait une BoundingBox AABB
 class BoundingBox : protected QOpenGLFunctions_3_1
@@ -18,13 +15,20 @@ class BoundingBox : protected QOpenGLFunctions_3_1
     bool isValid(const QVector3D & min, const QVector3D &max);
 
 public:
+    // Methods
     BoundingBox();
+    BoundingBox(const BoundingBox& bb);
     BoundingBox(const QVector3D & min, const QVector3D &max);
 
     QVector3D center();
     QVector3D extents(); // distances entre le centre et chaque face
 
-    void render(QOpenGLShaderProgram *program);
+    QVector3D min();
+    void min(QVector3D & min);
+
+    QVector3D max();
+    void max(QVector3D & max);
+
     void print();
 };
 

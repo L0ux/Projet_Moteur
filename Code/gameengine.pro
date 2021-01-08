@@ -10,6 +10,8 @@ SOURCES += main.cpp \
     RigidBody.cpp \
     Transform.cpp \
     boundingbox.cpp \
+    common.cpp \
+    mesh.cpp \
     vertex.cpp
 
 SOURCES += \
@@ -25,6 +27,8 @@ HEADERS += \
     RigidBody.h \
     Transform.h \
     boundingbox.h \
+    common.h \
+    mesh.h \
     vertex.h
 
 RESOURCES += \

@@ -4,6 +4,7 @@
 #include <QVector3D>
 #include <QDebug>
 #include "boundingbox.h"
+#include "mesh.h"
 
 class RigidBody
 {
@@ -15,6 +16,7 @@ class RigidBody
     float _mass;
     QVector3D _centroid;
     QVector3D _mass_center; // is the same as centroid if the object is uniform
+    Mesh mesh;
 
 public:
     RigidBody(bool hasG = true, bool isMov = true, float sp = 0.0f, float acc = 0.0f, float mass = 1.0f);

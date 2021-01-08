@@ -88,6 +88,7 @@ protected:
     void paintGL() override;
 
     void draw(QMatrix4x4 mvp,GameObject* object);
+    void drawBoundingBox(GameObject * current);
 
     void initShaders();
     void initTextures();

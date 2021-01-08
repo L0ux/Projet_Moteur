@@ -56,23 +56,9 @@
 #include <QOpenGLBuffer>
 #include <QVector2D>
 #include <QVector3D>
+#include "common.h"
 #include "Transform.h"
-
-struct VertexData
-{
-    QVector3D position;
-    QVector2D texCoord;
-
-    VertexData(){
-        position = QVector3D(0,0,0);
-        texCoord = QVector2D(0,0);
-    }
-
-    VertexData(QVector3D p, QVector2D t){
-        position = p;
-        texCoord = t;
-    }
-};
+#include "boundingbox.h"
 
 class MeshBuilder : protected QOpenGLFunctions_3_1
 {

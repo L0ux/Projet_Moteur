@@ -1,11 +1,6 @@
 #pragma once
 
-#include <QVector3D>
-#include <QVector4D>
-#include <QMatrix3x3>
-#include <QMatrix4x4>
-#include <math.h>
-#include <QDebug>
+#include "common.h"
 
 // --V2
 class Transform{
@@ -24,9 +19,9 @@ public:
     float getScale();
     Transform scale(float s);
     QVector3D getRotation();
-    Transform rotate(QVector3D r);
+    Transform rotate(QVector3D& r);
     QVector3D getTranslation();
-    Transform translate(QVector3D v);
+    Transform translate(QVector3D& v);
     QMatrix4x4 getModel();
     void setModel(QMatrix4x4 m);
     QMatrix4x4 computeModel();
@@ -35,8 +30,8 @@ public:
 
     //Version LOUX
     QMatrix4x4 lModel;
-    void lRotate(QVector3D r);
-    void lTranslate(QVector3D t);
+    void lRotate(QVector3D& r);
+    void lTranslate(QVector3D& t);
     void lScale(float s);
     void lPrintModel();
 
