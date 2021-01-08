@@ -1,5 +1,8 @@
 #include "Physics.h"
 
+QVector3D Physics::gravityDirection{0,-1,0};
+float Physics::gravityAcceleration{0.03};
+
 Physics::Physics()
 {
 

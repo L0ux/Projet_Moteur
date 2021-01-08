@@ -1,0 +1,13 @@
+debug/main.o
+debug/Camera.o
+debug/GameObject.o
+debug/Physics.o
+debug/RigidBody.o
+debug/Transform.o
+debug/boundingbox.o
+debug/vertex.o
+debug/MeshBuilder.o
+debug/OpenGl.o
+debug/qrc_shaders.o
+debug/qrc_textures.o
+debug/moc_OpenGl.o
