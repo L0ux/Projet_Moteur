@@ -6,6 +6,8 @@
 #include "RigidBody.h"
 #include <QtDebug>
 
+
+
 class GameObject
 {
 
@@ -21,6 +23,7 @@ public:
 
     //Attribut
     static GameObject * _world;
+    static std::vector<GameObject*> aabbSortedObjects;
     RigidBody rigidBody;
 
 
@@ -42,10 +45,23 @@ public:
     void Scale(float s);
     bool collides(GameObject * other,QVector3D direction);
 
+
+    static ushort findHighestVarianceAxis();
+    static void sortAABBs(ushort axis);
+    static bool compareBBs(const BoundingBox& lhs, const BoundingBox&rhs,ushort axis);
+
 private:
     GameObject(); // only use to create world
 
 
+};
+
+struct AABBComparator{
+    ushort axis;
+    AABBComparator(ushort ax) : axis{ax}{}
+    bool operator()(GameObject a,GameObject b){
+
+    }
 };
 
 #endif // GAMEOBJECT_H

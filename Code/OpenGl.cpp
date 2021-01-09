@@ -100,9 +100,11 @@ OpenGl::OpenGl(QWidget *parent) :
 
     camera = new Camera("Camera");
     camera->Translate({0,10,-20});
+    camera->rigidBody.hasGravity(true);
     //camera->lookAt(camera->getWorldPosition(),cube_2->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
     camera->lookAt(camera->getWorldPosition(),{0,5,0},QVector3D(0.0f, 1.0f, 0.0f));
 
+    GameObject::sortAABBs(GameObject::findHighestVarianceAxis());
 }
 
 OpenGl::~OpenGl()
@@ -236,7 +238,7 @@ void OpenGl::resizeGL(int w, int h)
 
 void OpenGl::draw(QMatrix4x4 mvp,GameObject* object){
     QMatrix4x4 matrice = mvp * object->Transform().computeModel();
-    if( object != camera){                                          //Pour ne pas dessiner la camera
+    if( object != camera){                             //Pour ne pas dessiner la camera
         program.setUniformValue("mvp_matrix", matrice);
         geometries->drawCubeGeometry(&program);
     }
@@ -275,6 +277,7 @@ void OpenGl::paintGL()
             if(world->fils[i]->rigidBody.hasGravity()){
                 QVector3D position = world->fils[i]->Transform().getTranslation();
                 float speed = world->fils[i]->rigidBody.speed();
+                qDebug() << world->fils[i]->nom;
                 qDebug() << "ancienne position " << position;
                 qDebug() << "ancienne vitesse " << speed;
                 Physics::computeGravityEffect(position,speed);

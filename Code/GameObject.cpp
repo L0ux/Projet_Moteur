@@ -9,6 +9,7 @@ GameObject::GameObject()
 }
 
 GameObject * GameObject::_world = new GameObject();
+std::vector<GameObject *> GameObject::aabbSortedObjects;
 
 GameObject::GameObject(QString n)
 {
@@ -16,6 +17,10 @@ GameObject::GameObject(QString n)
     transform = Transform();
     rigidBody = RigidBody();
     GameObject::_world->addFils(this);
+    if(!n.toLower().contains("camera")){
+        GameObject::aabbSortedObjects.push_back(this);
+    }
+
 }
 
 GameObject::GameObject(QString n, GameObject * father)
@@ -24,6 +29,9 @@ GameObject::GameObject(QString n, GameObject * father)
     transform = Transform();
     rigidBody = RigidBody();
     father->addFils(this);
+    if(!n.toLower().contains("camera")){
+        GameObject::aabbSortedObjects.push_back(this);
+    }
 }
 
 void GameObject::addFils(GameObject* f){
@@ -55,6 +63,58 @@ QVector3D GameObject::getWorldPosition(){
         p = p->pere;
     }
     return position;
+}
+
+ushort GameObject::findHighestVarianceAxis(){
+    float minX = GameObject::aabbSortedObjects[0]->bbox.min().x();
+    float minY = GameObject::aabbSortedObjects[0]->bbox.min().y();
+    float minZ = GameObject::aabbSortedObjects[0]->bbox.min().z();
+
+    float maxX = GameObject::aabbSortedObjects[0]->bbox.max().x();
+    float maxY = GameObject::aabbSortedObjects[0]->bbox.max().y();
+    float maxZ = GameObject::aabbSortedObjects[0]->bbox.max().z();
+
+    for(auto i = 0; i < GameObject::aabbSortedObjects.size();++i){
+        GameObject::aabbSortedObjects[i]->print();
+        minX = std::min(minX,GameObject::aabbSortedObjects[i]->bbox.min().x());
+        minY = std::min(minY,GameObject::aabbSortedObjects[i]->bbox.min().y());
+        minZ = std::min(minZ,GameObject::aabbSortedObjects[i]->bbox.min().z());
+
+        maxX = std::max(maxX,GameObject::aabbSortedObjects[i]->bbox.max().x());
+        maxY = std::max(maxY,GameObject::aabbSortedObjects[i]->bbox.max().y());
+        maxZ = std::max(maxZ,GameObject::aabbSortedObjects[i]->bbox.max().z());
+    }
+
+    //qDebug() << minX;
+    //qDebug() << minY;
+    //qDebug() << minZ;
+    //qDebug() << maxX;
+    //qDebug() << maxY;
+    //qDebug() << maxZ;
+
+    float varianceX = maxX - minX;
+    float varianceY = maxY - minY;
+    float varianceZ = maxZ - minZ;
+    //qDebug() << varianceX;
+    //qDebug() << varianceY;
+    //qDebug() << varianceZ;
+
+    if(varianceX > varianceY && varianceX > varianceZ){
+        return 0;
+    }
+    if(varianceY > varianceX && varianceY > varianceZ){
+        return 1;
+    }
+    if(varianceZ > varianceX && varianceZ > varianceY){
+        return 2;
+    }
+    return 3;
+}
+
+void GameObject::sortAABBs(ushort axis){
+    /*std::sort(GameObject::aabbSortedObjects.begin(),
+              GameObject::aabbSortedObjects.end(),
+              compareBBs);*/
 }
 
 Transform GameObject::Transform(){
@@ -94,7 +154,7 @@ BoundingBox GameObject::transformBoundingBox(QMatrix4x4 & m){
 
     // calcul de la nouvelle position des sommets de la bounding box
     for(auto i = 0; i < 8;++i){
-        vertices[i] = vertices[i] * m;
+        vertices[i] = m * vertices[i];
     }
 
     float minX = vertices[0].x();
@@ -116,7 +176,10 @@ BoundingBox GameObject::transformBoundingBox(QMatrix4x4 & m){
         maxZ = std::max(maxZ,vertices[i].z());
     }
 
-    return BoundingBox(QVector3D(minX,minY,minZ),QVector3D(maxX,maxY,maxZ));
+    bbox.min(QVector3D(minX,minY,minZ));
+    bbox.max(QVector3D(maxX,maxY,maxZ));
+
+    return bbox;
 }
 
 bool GameObject::collides(GameObject *other, QVector3D direction){

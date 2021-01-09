@@ -24,10 +24,10 @@ public:
     QVector3D extents(); // distances entre le centre et chaque face
 
     QVector3D min();
-    void min(QVector3D & min);
+    void min(QVector3D min);
 
     QVector3D max();
-    void max(QVector3D & max);
+    void max(QVector3D max);
 
     void print();
 };

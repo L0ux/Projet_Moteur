@@ -15,6 +15,7 @@
 #include <QWidget>
 #include <QDebug>
 #include <math.h>
+#include <algorithm>
 
 struct VertexData
 {

@@ -48,7 +48,7 @@ QVector3D BoundingBox::min(){
     return _min;
 }
 
-void BoundingBox::min(QVector3D& min){
+void BoundingBox::min(QVector3D min){
     _min = min;
 }
 
@@ -56,7 +56,7 @@ QVector3D BoundingBox::max(){
     return _max;
 }
 
-void BoundingBox::max(QVector3D& max){
+void BoundingBox::max(QVector3D max){
     _max = max;
 }
 
