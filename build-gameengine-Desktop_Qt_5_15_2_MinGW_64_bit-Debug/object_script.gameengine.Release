@@ -5,6 +5,8 @@ release/Physics.o
 release/RigidBody.o
 release/Transform.o
 release/boundingbox.o
+release/common.o
+release/mesh.o
 release/vertex.o
 release/MeshBuilder.o
 release/OpenGl.o
