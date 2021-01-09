@@ -43,7 +43,6 @@ void GameObject::addFils(GameObject* f){
 void GameObject::addPere(GameObject* p){
     pere = nullptr;
     pere = p;
-    //qDebug() << "Je suis" << this->nom << "et j'ajoute" << p->nom << "comme père";;
 }
 
 GameObject* GameObject::getObject(QString n){
@@ -56,12 +55,13 @@ GameObject* GameObject::getObject(QString n){
 }
 
 QVector3D GameObject::getWorldPosition(){
-    QVector3D position = this->transform.getTranslation();
+    QVector3D position = QVector3D();
     GameObject* p = this->pere;
     while ( p != nullptr ){
         position = position + pere->transform.getTranslation();
         p = p->pere;
     }
+    position = position + this->transform.getTranslation();
     return position;
 }
 

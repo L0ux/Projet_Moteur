@@ -98,13 +98,13 @@ OpenGl::OpenGl(QWidget *parent) :
     cube_3->rigidBody.hasGravity(false);
     cube_4->Translate({5,0,0});
 
-    camera = new Camera("Camera");
-    camera->Translate({0,10,-20});
     camera->rigidBody.hasGravity(true);
-    //camera->lookAt(camera->getWorldPosition(),cube_2->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
-    camera->lookAt(camera->getWorldPosition(),{0,5,0},QVector3D(0.0f, 1.0f, 0.0f));
 
-    GameObject::sortAABBs(GameObject::findHighestVarianceAxis());
+    camera = new Camera("Camera");
+    camera->Translate({0,0,-20});
+
+    /*camera = new Camera("Camera");
+    camera->Translate({0,0,-20});*/
 }
 
 OpenGl::~OpenGl()
@@ -247,6 +247,11 @@ void OpenGl::draw(QMatrix4x4 mvp,GameObject* object){
     }
 }
 
+void OpenGl::refreshCamera(){
+    qDebug() << "Position pere = " << camera->pere->getWorldPosition();
+    qDebug() << "Camera position " << camera->getWorldPosition();
+    camera->lookAt(camera->getWorldPosition(),camera->pere->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
+}
 
 void OpenGl::paintGL()
 {
@@ -283,13 +288,11 @@ void OpenGl::paintGL()
                 Physics::computeGravityEffect(position,speed);
                 world->fils[i]->Translate(position);
                 world->fils[i]->rigidBody.speed(speed);
-                qDebug() << "nouvelle position " << position;
-                qDebug() << "nouvelle vitesse " << speed;
             }
         }
         draw(camera->projection*camera->vue(),world->fils[i]);
     }
-
+    refreshCamera();
     timerEvent(new QTimerEvent(0));
 }
 

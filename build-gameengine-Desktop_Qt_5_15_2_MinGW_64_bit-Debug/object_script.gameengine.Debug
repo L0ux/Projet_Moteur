@@ -5,6 +5,8 @@ debug/Physics.o
 debug/RigidBody.o
 debug/Transform.o
 debug/boundingbox.o
+debug/common.o
+debug/mesh.o
 debug/vertex.o
 debug/MeshBuilder.o
 debug/OpenGl.o

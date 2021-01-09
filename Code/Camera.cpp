@@ -21,11 +21,11 @@ QMatrix4x4 Camera::mv(){
 
 QMatrix4x4 Camera::vue(){
     //QMatrix3x3 v2 = this->pere->transform.computeModel().normalMatrix().transposed();
-    QMatrix4x4 v = this->pere->Transform().computeModel().inverted() * this->v;
+    QMatrix4x4 v = this->pere->Transform().computeModel() * this->v; //.inverted() * this->v;
     GameObject* p = this->pere->pere;
     while( p != nullptr ){
         //v2 = v2 * p->transform.computeModel().normalMatrix().transposed();
-        v = v * p->Transform().computeModel().inverted();
+        v = v * p->Transform().computeModel();//.inverted();
         p = p->pere;
     }
     QMatrix4x4 vue(v);
@@ -38,5 +38,6 @@ QMatrix4x4 Camera::model(){
 }
 
 void Camera::lookAt(QVector3D  position,QVector3D target,QVector3D up){
+    v = QMatrix4x4();
     v.lookAt(position,target,up);
 }
