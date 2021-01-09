@@ -64,43 +64,63 @@ Transform GameObject::Transform(){
 void GameObject::Translate(QVector3D v){
     transform.translate(v);
     QMatrix4x4 m =transform.computeModel();
-    transformBoundingBox(bbox,m);
+    transformBoundingBox(m);
 }
 
 void GameObject::Rotate(QVector3D r){
     transform.rotate(r);
     QMatrix4x4 m = transform.computeModel();
-    transformBoundingBox(bbox,m);
+    transformBoundingBox(m);
 }
 
 void GameObject::Scale(float s){
     transform.scale(s);
     QMatrix4x4 m = transform.computeModel();
-    transformBoundingBox(bbox,m);
+    transformBoundingBox(m);
 }
 
-BoundingBox GameObject::transformBoundingBox(BoundingBox & bb, QMatrix4x4 & m){
-    qDebug() << m;
-    QVector4D right{m(0,0),m(1,0),m(2,0),m(3,0)};
-    QVector4D up{m(0,1),m(1,1),m(2,1),m(3,1)};
-    QVector4D back{m(0,2),m(1,2),m(2,2),m(3,2)};
+// fonction generale, translate et scale devrait pouvoir se passer
+// de la deuxieme partie, a voir pour optimisations
+BoundingBox GameObject::transformBoundingBox(QMatrix4x4 & m){
+    QVector3D v1 = bbox.min();
+    QVector3D v8 = bbox.max();
+    QVector3D vertices[8] = {v1,v8,
+                           QVector3D(v1.x(),v8.y(),v1.z()),
+                           QVector3D(v1.x(),v8.y(),v8.z()),
+                           QVector3D(v1.x(),v1.y(),v8.z()),
+                           QVector3D(v8.x(),v1.y(),v1.z()),
+                           QVector3D(v8.x(),v8.y(),v1.z()),
+                           QVector3D(v8.x(),v1.y(),v8.z())};
 
-    QVector3D translation{m(0,3),m(1,3),m(2,3)};
-    QVector3D scale{m(0,0),m(1,1),m(2,2)};
+    // calcul de la nouvelle position des sommets de la bounding box
+    for(auto i = 0; i < 8;++i){
+        vertices[i] = vertices[i] * m;
+    }
 
-    QVector4D xa = right * bb.min().x();
-    QVector4D xb = right * bb.max().x();
+    float minX = vertices[0].x();
+    float minY = vertices[0].y();
+    float minZ = vertices[0].z();
 
-    QVector4D ya = up * bb.min().y();
-    QVector4D yb = up * bb.max().y();
+    float maxX = vertices[0].x();
+    float maxY = vertices[0].y();
+    float maxZ = vertices[0].z();
 
-    QVector4D za = back * bb.min().z();
-    QVector4D zb = back * bb.max().z();
+    // recalcul des extremas car en cas de rotation ils changent
+    for(auto i = 0; i < 8;++i){
+        minX = std::min(minX,vertices[i].x());
+        minY = std::min(minY,vertices[i].y());
+        minZ = std::min(minZ,vertices[i].z());
 
-    qDebug() << xa << xb << ya << yb << za << zb;
+        maxX = std::max(maxX,vertices[i].x());
+        maxY = std::max(maxY,vertices[i].y());
+        maxZ = std::max(maxZ,vertices[i].z());
+    }
 
+    return BoundingBox(QVector3D(minX,minY,minZ),QVector3D(maxX,maxY,maxZ));
+}
 
-    return BoundingBox();
+bool GameObject::collides(GameObject *other, QVector3D direction){
+    return false;
 }
 
 void GameObject::printFils(){
