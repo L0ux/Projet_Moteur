@@ -56,9 +56,9 @@
 #include <QOpenGLBuffer>
 #include <QVector2D>
 #include <QVector3D>
-#include "common.h"
+#include "Common.h"
 #include "Transform.h"
-#include "boundingbox.h"
+#include "Boundingbox.h"
 
 class MeshBuilder : protected QOpenGLFunctions_3_1
 {

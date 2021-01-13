@@ -98,10 +98,9 @@ OpenGl::OpenGl(QWidget *parent) :
     cube_3->rigidBody.hasGravity(false);
     cube_4->Translate({5,0,0});
 
-    camera->rigidBody.hasGravity(true);
-
-    camera = new Camera("Camera");
+    camera = new Camera("Camera",cube_3);
     camera->Translate({0,0,-20});
+    camera->lookAt(camera->getWorldPosition(),camera->pere->getWorldPosition(),QVector3D(0.0f, 1.0f, 0.0f));
 
     /*camera = new Camera("Camera");
     camera->Translate({0,0,-20});*/

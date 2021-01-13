@@ -3,8 +3,8 @@
 
 #include <QVector3D>
 #include <QDebug>
-#include "boundingbox.h"
-#include "mesh.h"
+#include "Boundingbox.h"
+#include "Mesh.h"
 
 class RigidBody
 {

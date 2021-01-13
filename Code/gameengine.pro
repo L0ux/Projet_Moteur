@@ -4,32 +4,30 @@ TARGET = gameengine
 TEMPLATE = app
 
 SOURCES += main.cpp \
+    Boundingbox.cpp \
     Camera.cpp \
+    Common.cpp \
     GameObject.cpp \
+    Mesh.cpp \
     Physics.cpp \
     RigidBody.cpp \
-    Transform.cpp \
-    boundingbox.cpp \
-    common.cpp \
-    mesh.cpp \
-    vertex.cpp
+    Transform.cpp
 
 SOURCES += \
     MeshBuilder.cpp \
     OpenGl.cpp
 
 HEADERS += \
+    Boundingbox.h \
     Camera.h \
+    Common.h \
     GameObject.h \
+    Mesh.h \
     MeshBuilder.h \
     OpenGl.h \
     Physics.h \
     RigidBody.h \
-    Transform.h \
-    boundingbox.h \
-    common.h \
-    mesh.h \
-    vertex.h
+    Transform.h
 
 RESOURCES += \
     shaders.qrc \

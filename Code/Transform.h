@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.h"
+#include "Common.h"
 
 // --V2
 class Transform{
@@ -86,7 +86,7 @@ class Transform{
             rZ(1,1) = cos(localRotation[2]);
         }
 
-        return rZ * rY * rX; // peut-être qu'il faudra inverser l'ordre
+        return rZ * rY * rX;
     }
 
 public:

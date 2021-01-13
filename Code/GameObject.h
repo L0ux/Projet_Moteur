@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "common.h"
+#include "Common.h"
 #include "Transform.h"
 #include "RigidBody.h"
 #include <QtDebug>
